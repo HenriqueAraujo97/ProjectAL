@@ -18,8 +18,8 @@ table 50100 CustomerOrderHeader
             var
                 Customer: Record Customer;
             begin
-                Customer.get(Rec.CustomerNo);
-                Name := Customer.Name
+                if Customer.get(Rec.CustomerNo) then
+                    Name := Customer.Name
             end;
 
         }
@@ -46,6 +46,7 @@ table 50100 CustomerOrderHeader
             DataClassification = ToBeClassified;
 
         }
+
     }
 
     keys
@@ -55,4 +56,12 @@ table 50100 CustomerOrderHeader
             Clustered = true;
         }
     }
+
+    trigger OnDelete()
+    var
+        CustomerOrderLine: Record CustomerOrderLine;
+    begin
+        CustomerOrderLine.SetRange(DocumentNo, Rec.No);
+        CustomerOrderLine.DeleteAll();
+    end;
 }

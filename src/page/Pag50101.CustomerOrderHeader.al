@@ -2,7 +2,6 @@ page 50101 CustomerOrderHeader
 {
     PageType = Card;
     ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = CustomerOrderHeader;
     Caption = 'Customer Order';
 
@@ -77,8 +76,29 @@ page 50101 CustomerOrderHeader
                 begin
                     if Rec.OrderAmountValue = 0 then
                         Error(ErroMsg);
-                    Answer := not Dialog.Confirm(ConfirmMsg, true, Rec.No);
+                    if Confirm(ConfirmMsg, true, Rec.No) then
+                        CustomerOrderPost.Run(Rec);
+                end;
+            }
+            action(Payment)
+            {
+                ApplicationArea = All;
+                Caption = 'Set Payment';
+                Image = Payment;
 
+                trigger OnAction()
+                var
+                    CustomerOrderPayment: record CustomerOrderPayment;
+                    TempCustomerOrderPayment: Record CustomerOrderPayment temporary;
+                begin
+                    TempCustomerOrderPayment.Init();
+                    TempCustomerOrderPayment.Validate(CustomerNo, Rec.CustomerNo);
+                    TempCustomerOrderPayment.Validate(DocumentNo, Rec.No);
+                    TempCustomerOrderPayment.Insert();
+                    if Page.RunModal(Page::CustomerOrderPayment, TempCustomerOrderPayment) = Action::LookupOK then begin
+                        CustomerOrderPayment.Copy(TempCustomerOrderPayment);
+                        CustomerOrderPayment.Insert();
+                    end;
                 end;
             }
         }

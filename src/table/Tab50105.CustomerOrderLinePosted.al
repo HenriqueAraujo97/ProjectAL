@@ -1,7 +1,7 @@
 table 50105 CustomerOrderLinePosted
 {
     DataClassification = ToBeClassified;
-
+    DrillDownPageId = CustomerOrderLinesPosted;
     fields
     {
         field(1; LineNo; Integer)
