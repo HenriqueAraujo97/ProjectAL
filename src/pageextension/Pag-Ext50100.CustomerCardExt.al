@@ -30,7 +30,14 @@ pageextension 50100 CustomerCardExt extends "Customer Card"
                 Caption = 'Paid Amounts';
                 Editable = false;
             }
+            field(VAT; CustomerOrderHeader.VAT)
+            {
+                ApplicationArea = All;
+            }
+
         }
     }
+    var
+        CustomerOrderHeader: Record CustomerOrderHeader;
 
 }

@@ -27,7 +27,7 @@ page 50101 CustomerOrderHeader
                     ApplicationArea = All;
 
                 }
-                field(Contact; Rec.Contact)
+                field(VAT; Rec.VAT)
                 {
                     ApplicationArea = All;
 

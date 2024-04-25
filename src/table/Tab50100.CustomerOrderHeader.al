@@ -36,7 +36,7 @@ table 50100 CustomerOrderHeader
             Caption = 'Order Amount';
             Editable = false;
         }
-        field(15; Contact; Integer)
+        field(15; VAT; Integer)
         {
             DataClassification = ToBeClassified;
 

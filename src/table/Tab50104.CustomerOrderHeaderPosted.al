@@ -22,7 +22,7 @@ table 50104 CustomerOrderHeaderPosted
             DataClassification = ToBeClassified;
 
         }
-        field(15; Contact; Integer)
+        field(15; VAT; Integer)
         {
             DataClassification = ToBeClassified;
 

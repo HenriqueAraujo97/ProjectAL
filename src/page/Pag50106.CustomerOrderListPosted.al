@@ -26,9 +26,9 @@ page 50106 CustomerOrderListPosted
                 {
                     ToolTip = 'Specifies the value of the Amount Paid field.';
                 }
-                field(Contact; Rec.Contact)
+                field(VAT; Rec.VAT)
                 {
-                    ToolTip = 'Specifies the value of the Contact field.';
+                    ToolTip = 'Specifies the value of the VAT field.';
                 }
                 field(Email; Rec.Email)
                 {
