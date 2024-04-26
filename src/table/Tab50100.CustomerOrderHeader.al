@@ -44,6 +44,7 @@ table 50100 CustomerOrderHeader
         field(25; Email; Code[30])
         {
             DataClassification = ToBeClassified;
+            ExtendedDatatype = EMail;
 
         }
 

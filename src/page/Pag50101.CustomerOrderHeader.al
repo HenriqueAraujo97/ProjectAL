@@ -30,11 +30,12 @@ page 50101 CustomerOrderHeader
                 {
                     ApplicationArea = All;
 
+
                 }
                 field(Email; Rec.Email)
                 {
                     ApplicationArea = All;
-
+                    ExtendedDatatype = EMail;
                 }
             }
 

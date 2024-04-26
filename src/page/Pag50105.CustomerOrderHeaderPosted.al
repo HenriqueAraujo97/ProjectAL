@@ -87,6 +87,18 @@ page 50105 CustomerOrderHeaderPosted
                     end;
                 end;
             }
+            action(Report)
+            {
+                ApplicationArea = All;
+                Caption = 'Receipt';
+                trigger OnAction()
+                var
+                // CustomerOrderReceipt: Report CustomerOrderReceipt;
+                begin
+                    Rec.SetRecFilter();
+                    Report.Run(Report::CustomerOrderReceipt, true, false, Rec);
+                end;
+            }
         }
     }
     trigger OnAfterGetRecord()
